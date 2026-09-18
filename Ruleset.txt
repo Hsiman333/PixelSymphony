@@ -1,0 +1,837 @@
+MUSIC BOT MASTER RULESET
+========================
+
+1. SONG FOUNDATION
+- Every song must have a defined key.
+- Every song must have a defined scale.
+- Every song must have a defined BPM.
+- Every song must have a defined time signature.
+- Every song must have a defined song length.
+- Every song must have a defined energy level.
+- Every song must have a defined genre.
+- Every song must have a defined mood.
+- Every generated note must be evaluated against the current key and scale.
+- Never randomly choose notes without checking the current scale.
+
+2. KEY
+- Major keys:
+  C, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B
+- Minor keys:
+  C, C#, D, D#, E, F, F#, G, G#, A, A#, B
+- Key determines the tonal center.
+- The root note is the primary point of resolution.
+- Melodies should frequently resolve toward the root.
+- Basslines should strongly reference the root.
+- Chords must belong to or intentionally relate to the current key.
+
+3. SCALE
+- Major:
+  1 2 3 4 5 6 7
+- Natural Minor:
+  1 2 b3 4 5 b6 b7
+- Harmonic Minor:
+  1 2 b3 4 5 b6 7
+- Melodic Minor:
+  1 2 b3 4 5 6 7
+- Major Pentatonic:
+  1 2 3 5 6
+- Minor Pentatonic:
+  1 b3 4 5 b7
+- Blues:
+  1 b3 4 b5 5 b7
+- Dorian:
+  1 2 b3 4 5 6 b7
+- Phrygian:
+  1 b2 b3 4 5 b6 b7
+- Lydian:
+  1 2 3 #4 5 6 7
+- Mixolydian:
+  1 2 3 4 5 6 b7
+- Locrian:
+  1 b2 b3 4 b5 b6 b7
+
+4. NOTE VALIDATION
+- Convert every MIDI note to pitch class.
+- pitchClass = MIDI % 12
+- Compare pitch class against the active scale.
+- If pitch class is not in the scale, reject the note by default.
+- Scale membership ignores octave.
+- E2, E3, E4 and E5 are all the same pitch class.
+- A note can be in key but still be wrong for the melody.
+- Octave must therefore be checked separately.
+- Never confuse "out of key" with "wrong octave."
+
+5. CHROMATIC NOTES
+- Chromatic notes are disabled by default.
+- Chromatic notes may be enabled for specific genres.
+- Chromatic notes should have a musical purpose.
+- Use chromatic notes as passing notes.
+- Use chromatic notes as approach notes.
+- Use chromatic notes for chord alteration.
+- Use chromatic notes for modulation.
+- Use chromatic notes for blues.
+- Use chromatic notes for jazz.
+- Resolve chromatic tension whenever appropriate.
+- Do not randomly insert chromatic notes.
+
+6. CHORDS
+- Chords must be compatible with the current key.
+- Chords should define the harmonic structure.
+- Melody should react to the current chord.
+- Chord tones receive higher priority than non-chord scale tones.
+- Root = strongest harmonic anchor.
+- 3rd = determines major/minor quality.
+- 5th = stable.
+- 7th = important color/tension tone.
+- 9th = extended color.
+- 11th = extended color.
+- 13th = extended color.
+- Chord inversions may be used.
+- Chord voicings should minimize unnecessary large jumps.
+- Avoid completely random chord changes.
+- Chord progression should have a recognizable harmonic direction.
+
+7. CHORD TONE PRIORITY
+- Root = very strong
+- 3rd = very strong
+- 5th = strong
+- 7th = strong
+- 9th = moderate
+- 11th = moderate
+- 13th = moderate
+- Non-chord scale tones = lower priority
+- Chromatic tones = lowest priority unless intentionally used
+
+8. MELODY
+- Melody must normally stay within the active scale.
+- Melody should follow the chord progression.
+- Strong beats should favor chord tones.
+- Weak beats may use passing tones.
+- Melody should contain recognizable phrases.
+- Melody should contain repetition.
+- Melody should contain variation.
+- Avoid completely random note sequences.
+- Avoid excessive note density.
+- Avoid excessive octave jumping.
+- Avoid excessive large intervals.
+- Use stepwise motion frequently.
+- Use thirds frequently.
+- Use fourths and fifths selectively.
+- Use sixths and sevenths sparingly.
+- Octave jumps should be intentional.
+- Large melodic leaps should often be followed by movement back toward the previous register.
+- Melodies should have beginning, development and resolution.
+- Phrase endings should generally resolve.
+- The melody should have a tonal center.
+
+9. MELODIC MOTIFS
+- Create short motifs.
+- Repeat motifs.
+- Transpose motifs when appropriate.
+- Alter rhythm while keeping the motif recognizable.
+- Alter the final note to create variation.
+- Repeat a phrase before introducing major changes.
+- Avoid changing every note every bar.
+- Use call and response.
+- Use question phrases.
+- Use answer phrases.
+
+10. INTERVAL RULES
+- Favor seconds.
+- Favor thirds.
+- Use fourths.
+- Use fifths.
+- Use sixths selectively.
+- Use sevenths carefully.
+- Use octaves intentionally.
+- Avoid constant large leaps.
+- After a large upward leap, consider downward movement.
+- After a large downward leap, consider upward movement.
+- Avoid creating awkward register jumps.
+- Evaluate melodic interval independently from key validation.
+
+11. OCTAVE RULES
+- Every note must have an octave.
+- Every instrument must have an allowed range.
+- Melody octave must remain within the instrument range.
+- Bass instruments should remain primarily in low registers.
+- Lead instruments can use higher registers.
+- Harmony instruments should occupy supporting registers.
+- Avoid every instrument playing in the same octave.
+- Avoid random octave changes.
+- Octave changes should follow phrase structure.
+- An octave change does not change whether a pitch is in key.
+- E3 and E4 are both E and therefore have the same pitch-class relationship to the key.
+
+12. BASS
+- Bass should strongly follow the chord progression.
+- Root notes should receive high priority.
+- Fifths should receive high priority.
+- Thirds can define chord quality.
+- Passing notes may connect chord tones.
+- Bass should generally avoid fighting the melody.
+- Bass should have its own rhythmic identity.
+- Bass should remain in its instrument range.
+- Bass should not randomly jump octaves.
+- 808s should generally follow chord roots and important chord tones.
+- Bass movement should reinforce the groove.
+
+13. HARMONY
+- Harmony notes must normally belong to the current chord or scale.
+- Harmony should support the melody.
+- Avoid unnecessary doubling of every melody note.
+- Use thirds for common harmonization.
+- Use sixths for common harmonization.
+- Use fourths and fifths where appropriate.
+- Harmony can use chord extensions.
+- Harmony should consider voice leading.
+- Harmony voices should have their own ranges.
+- Avoid excessive voice crossing.
+- Avoid random harmony movement.
+- Harmony should resolve tension appropriately.
+
+14. COUNTERMELODY
+- Countermelody must not constantly compete with the lead.
+- Countermelody should occupy a different register.
+- Countermelody should use complementary rhythms.
+- Countermelody should follow the harmony.
+- Countermelody may answer the lead.
+- Countermelody may fill spaces left by the lead.
+- Avoid playing constantly when the lead is busy.
+- Countermelody can repeat motifs.
+
+15. RHYTHM
+- Every note must have a rhythmic position.
+- Use the current time signature.
+- Respect the current BPM.
+- Strong beats should generally contain stronger harmonic material.
+- Weak beats can contain passing material.
+- Syncopation may be used according to genre.
+- Avoid completely uniform rhythms.
+- Avoid completely random rhythms.
+- Use repetition.
+- Use rhythmic motifs.
+- Use rests.
+- Use note-length variation.
+- Use velocity variation.
+
+16. GROOVE
+- Kick and bass should work together.
+- Snare should establish the backbeat where appropriate.
+- Hi-hats should establish subdivisions.
+- Percussion should add movement.
+- Groove should match genre.
+- Swing should be controlled by a genre parameter.
+- Humanization should be controlled rather than completely random.
+
+17. VELOCITY
+- Important notes should generally have stronger velocity.
+- Passing notes can have lower velocity.
+- Phrase peaks can have higher velocity.
+- Background instruments should generally be quieter.
+- Melody should generally remain distinguishable.
+- Do not give every note identical velocity.
+- Do not randomize velocity excessively.
+
+18. HUMANIZATION
+- Slight timing variation.
+- Slight velocity variation.
+- Slight note-length variation.
+- Instrument-specific timing behavior.
+- Instrument-specific articulation.
+- Humanization must not push notes outside their intended musical timing.
+- Humanization must not change the intended pitch.
+- Humanization must not create accidental out-of-key notes.
+
+19. SONG STRUCTURE
+- Intro
+- Verse
+- Pre-Chorus
+- Chorus
+- Bridge
+- Breakdown
+- Drop
+- Solo
+- Outro
+- Not every genre requires every section.
+- Sections should have different energy levels.
+- Sections should introduce and remove instruments.
+- Major sections should have identifiable musical changes.
+- Motifs can return between sections.
+
+20. DYNAMICS
+- Quiet sections should use fewer layers.
+- Builds should gradually increase energy.
+- Climaxes should use more layers.
+- Drops should change density and/or instrumentation.
+- Transitions should prepare the next section.
+- Avoid maximum intensity throughout the entire song.
+- Use silence and space intentionally.
+
+21. RAP
+- Strong drums.
+- Kick.
+- Snare.
+- Hi-hat.
+- 808.
+- Sub-bass.
+- Piano.
+- Synth.
+- Electric piano.
+- Guitar.
+- Strings.
+- Brass.
+- Samples.
+- Vocal chops.
+- Turntable scratches.
+- Melody should often be simple.
+- Rhythm should be highly important.
+- 808 should follow harmonic roots.
+- Use minor, major, pentatonic and blues scales.
+- Use repeated melodic motifs.
+- Leave space for vocals.
+- Hook should be more memorable than background material.
+
+22. HIP-HOP
+- Drum machine.
+- Kick.
+- Snare.
+- Hi-hats.
+- Percussion.
+- 808.
+- Bass.
+- Piano.
+- Electric piano.
+- Synth.
+- Guitar.
+- Strings.
+- Brass.
+- Flute.
+- Organ.
+- Samples.
+- Vocal chops.
+- Melody should generally be repetitive and recognizable.
+- Groove is extremely important.
+- Sampling can drive the harmonic identity.
+- Leave space for vocals.
+
+23. JAZZ
+- Piano.
+- Upright bass.
+- Electric bass.
+- Jazz guitar.
+- Drum kit.
+- Saxophone.
+- Trumpet.
+- Trombone.
+- Clarinet.
+- Flute.
+- Vibraphone.
+- Hammond organ.
+- Electric piano.
+- Use 7th chords.
+- Use 9th chords.
+- Use 11th chords.
+- Use 13th chords.
+- Use extended harmony.
+- Use chord substitutions.
+- Use passing chords.
+- Use secondary dominants.
+- Use chromatic approach notes.
+- Use improvisation.
+- Use swing.
+- Use syncopation.
+- Melody can use chromatic material when harmonically justified.
+- Improvisation must follow the underlying harmony.
+- Chord tones should remain important targets.
+
+24. ELECTRONIC
+- Synth bass.
+- Sub-bass.
+- Lead synth.
+- Pad.
+- Pluck.
+- Arpeggiator.
+- Drum machine.
+- Kick.
+- Snare.
+- Clap.
+- Hi-hat.
+- Percussion.
+- Sampler.
+- Vocal chops.
+- Vocoder.
+- FX.
+- Use automation.
+- Use filters.
+- Use sidechain.
+- Use arpeggios.
+- Bass should follow harmony.
+- Leads should follow scale.
+- Pads should follow chords.
+- Drops should have clear motifs.
+- Builds should increase tension.
+- Use rhythmic repetition.
+
+25. CINEMATIC
+- Violin.
+- Viola.
+- Cello.
+- Double bass.
+- Piano.
+- Harp.
+- French horn.
+- Trumpet.
+- Trombone.
+- Tuba.
+- Flute.
+- Oboe.
+- Clarinet.
+- Bassoon.
+- Timpani.
+- Taiko.
+- Cymbals.
+- Percussion.
+- Choir.
+- Organ.
+- Synth.
+- Drones.
+- Sound design.
+- Use motifs.
+- Use thematic development.
+- Use ostinatos.
+- Use counterpoint.
+- Use large dynamic changes.
+- Use register changes.
+- Use tension and resolution.
+- Use pedal tones.
+- Minor keys are common but not required.
+- Avoid constant maximum intensity.
+- Build toward musical climaxes.
+
+26. LO-FI
+- Electric piano.
+- Rhodes.
+- Piano.
+- Jazz guitar.
+- Electric guitar.
+- Upright bass.
+- Bass guitar.
+- Soft synth.
+- Pad.
+- Drum machine.
+- Kick.
+- Snare.
+- Hi-hat.
+- Shaker.
+- Percussion.
+- Hammond organ.
+- Sampler.
+- Vocal samples.
+- Vinyl textures.
+- Tape textures.
+- Use major, minor, Dorian and pentatonic scales.
+- Use 7th chords.
+- Use 9th chords.
+- Use simple melodies.
+- Use repetition.
+- Use swing.
+- Use imperfect timing.
+- Use warm harmonies.
+- Use space.
+- Use subtle background textures.
+
+27. BLUES
+- Electric guitar.
+- Acoustic guitar.
+- Slide guitar.
+- Bass guitar.
+- Upright bass.
+- Piano.
+- Hammond organ.
+- Drum kit.
+- Harmonica.
+- Saxophone.
+- Trumpet.
+- Trombone.
+- Tambourine.
+- Vocals.
+- Use minor pentatonic.
+- Use blues scale.
+- Use dominant 7th chords.
+- Use 12-bar blues.
+- Use call and response.
+- Use guitar bends.
+- Use repeated phrases.
+- Use turnarounds.
+- Blue notes can be intentionally chromatic.
+- Blues notes should resolve or function stylistically.
+- Use shuffle or swing where appropriate.
+
+28. CLASSICAL
+- Violin.
+- Viola.
+- Cello.
+- Double bass.
+- Harp.
+- Flute.
+- Piccolo.
+- Oboe.
+- English horn.
+- Clarinet.
+- Bass clarinet.
+- Bassoon.
+- Contrabassoon.
+- French horn.
+- Trumpet.
+- Trombone.
+- Tuba.
+- Timpani.
+- Percussion.
+- Piano.
+- Organ.
+- Celesta.
+- Choir.
+- Use strict voice leading when appropriate.
+- Respect instrument ranges.
+- Use counterpoint.
+- Use motifs.
+- Use thematic development.
+- Use cadences.
+- Use phrase structure.
+- Use dynamics.
+- Use articulation.
+- Use tempo changes.
+- Avoid random parallel voice movement.
+- Avoid unnecessary voice crossing.
+- Avoid random dissonance.
+- Chord progression should have harmonic purpose.
+
+29. R&B
+- Piano.
+- Rhodes.
+- Electric piano.
+- Synth.
+- Synth bass.
+- Sub-bass.
+- Bass guitar.
+- Drum kit.
+- Drum machine.
+- Kick.
+- Snare.
+- Hi-hat.
+- Clap.
+- Percussion.
+- Electric guitar.
+- Acoustic guitar.
+- Hammond organ.
+- Strings.
+- Brass.
+- Vocal chops.
+- Lead vocals.
+- Background vocals.
+- Choir.
+- Use major.
+- Use minor.
+- Use Dorian.
+- Use pentatonic.
+- Use blues.
+- Use 7th chords.
+- Use 9th chords.
+- Use 11th chords.
+- Use 13th chords.
+- Use smooth voice leading.
+- Use syncopation.
+- Use vocal runs.
+- Use call and response.
+- Melody should emphasize chord tones.
+- Leave room between vocal phrases.
+
+30. GENERAL GENRE RULE
+- Genre determines instrument probability.
+- Genre determines rhythm probability.
+- Genre determines scale probability.
+- Genre determines chord complexity.
+- Genre determines melody complexity.
+- Genre determines swing.
+- Genre determines note density.
+- Genre determines acceptable chromaticism.
+- Genre determines typical BPM range.
+- Genre determines arrangement.
+- Genre determines sound design.
+- Genre does NOT override basic pitch validation unless a deliberate chromatic rule allows it.
+
+31. NOTE SELECTION ALGORITHM
+
+FOR EVERY NOTE:
+
+STEP 1:
+Determine current key.
+
+STEP 2:
+Determine current scale.
+
+STEP 3:
+Generate candidate notes.
+
+STEP 4:
+Remove notes outside the scale.
+
+STEP 5:
+Check current chord.
+
+STEP 6:
+Prioritize chord tones.
+
+STEP 7:
+Check instrument range.
+
+STEP 8:
+Check previous note.
+
+STEP 9:
+Evaluate interval.
+
+STEP 10:
+Check octave.
+
+STEP 11:
+Check rhythmic position.
+
+STEP 12:
+Check genre rules.
+
+STEP 13:
+Check melody contour.
+
+STEP 14:
+Check motif relationship.
+
+STEP 15:
+Check tension/resolution.
+
+STEP 16:
+Assign probability.
+
+STEP 17:
+Choose the highest-weighted valid candidate.
+
+STEP 18:
+Store the note.
+
+STEP 19:
+Use the resulting note as context for the next note.
+
+32. NOTE WEIGHTING
+
+Chord root:
++100
+
+Chord 3rd:
++95
+
+Chord 5th:
++90
+
+Chord 7th:
++80
+
+Other chord extension:
++65
+
+Scale tone:
++50
+
+Passing scale tone:
++40
+
+Good melodic interval:
++30
+
+Motif-compatible note:
++30
+
+Good phrase resolution:
++30
+
+Genre-compatible note:
++20
+
+Strong-beat chord tone:
++30
+
+Weak-beat passing tone:
++10
+
+Repeated note:
+-10 if overused
+
+Large leap:
+-20 if overused
+
+Awkward octave:
+-30
+
+Out of instrument range:
+-100
+
+Out of scale:
+-100
+
+Random chromatic note:
+-100
+
+Unresolved dissonance:
+-50
+
+33. TENSION SYSTEM
+
+Stable:
+- Root
+- 3rd
+- 5th
+
+Moderately tense:
+- 7th
+- 9th
+- 6th
+- 11th
+- 13th
+
+Highly tense:
+- Altered tones
+- Chromatic tones
+- Tritones
+
+Tension should generally move toward stability.
+
+34. RESOLUTION
+
+Common resolutions:
+- 2 → 1
+- 4 → 3
+- 6 → 5
+- 7 → 1
+- b2 → 1
+- Chromatic approach → target note
+
+Not every tension must resolve immediately.
+
+35. INSTRUMENT RANGE
+
+Every instrument must have:
+- Minimum MIDI note.
+- Maximum MIDI note.
+- Preferred register.
+- Maximum comfortable leap.
+- Preferred note density.
+- Articulation rules.
+
+Never generate notes outside the instrument's playable range.
+
+36. LAYER PRIORITY
+
+Primary:
+- Lead melody
+- Main vocal
+- Main rhythmic element
+
+Secondary:
+- Harmony
+- Bass
+- Countermelody
+
+Tertiary:
+- Pads
+- Atmosphere
+- FX
+- Background textures
+
+Background layers should not overpower primary layers.
+
+37. MIXING-AWARE MUSIC GENERATION
+
+- Bass occupies low frequencies.
+- Kick should not constantly conflict with bass.
+- Melody should have space above the harmony.
+- Pads should not constantly occupy the same register as the lead.
+- Countermelody should use a different register.
+- Low instruments should avoid excessive stacking.
+- Important instruments should remain distinguishable.
+- Background layers should be lower in volume.
+
+38. RANDOMNESS
+
+- Randomness should occur AFTER musical constraints.
+- Never randomize unrestricted MIDI notes.
+- Randomness should select between valid candidates.
+- Randomness should be weighted.
+- Randomness should be controlled by a creativity parameter.
+
+LOW CREATIVITY:
+- More chord tones.
+- More repetition.
+- Smaller intervals.
+- Less chromaticism.
+
+MEDIUM CREATIVITY:
+- More variation.
+- More passing notes.
+- More melodic movement.
+
+HIGH CREATIVITY:
+- More unusual intervals.
+- More rhythmic variation.
+- More substitutions.
+- More chromaticism where genre permits.
+- More motif transformations.
+
+39. FINAL VALIDATION
+
+Before a note is accepted:
+
+[ ] Is it in the key?
+[ ] Is it in the scale?
+[ ] Is it compatible with the chord?
+[ ] Is it inside the instrument's range?
+[ ] Is the octave appropriate?
+[ ] Is the interval reasonable?
+[ ] Does the rhythm make sense?
+[ ] Does it fit the melody?
+[ ] Does it fit the harmony?
+[ ] Does it fit the genre?
+[ ] Does it fit the current motif?
+[ ] Does it create appropriate tension?
+[ ] Does it resolve appropriately?
+[ ] Does it avoid excessive repetition?
+[ ] Does it avoid unnecessary chromaticism?
+
+IF FAILED:
+Reject note and select another candidate.
+
+IF PASSED:
+Accept note.
+
+40. GOLDEN RULE
+
+NEVER:
+"Pick a random note and hope it sounds good."
+
+INSTEAD:
+
+KEY
+→ SCALE
+→ CHORD
+→ CANDIDATE NOTES
+→ CHORD TONE PRIORITY
+→ MELODY CONTEXT
+→ INTERVAL
+→ OCTAVE
+→ RHYTHM
+→ INSTRUMENT RANGE
+→ GENRE
+→ TENSION
+→ RESOLUTION
+→ WEIGHT
+→ SELECT
+→ PLAY
